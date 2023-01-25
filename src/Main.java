@@ -10,7 +10,7 @@ public class Main {
 //region GLOBAL VARIABLE DECLARATION
         Scanner input = new Scanner(System.in);
         Random randomNum = new Random();
-        int budget;
+        float budget;
         ArrayList<Team> teamList = new ArrayList<>();
 //endregion
 

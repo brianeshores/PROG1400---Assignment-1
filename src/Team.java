@@ -8,11 +8,11 @@ public class Team {
     private int totalAssists;
     private int totalPoints;
     private String teamRating;
-    private int budget;
+    private double budget;
 //endregion
 
 //region Constructor
-    public Team(int budget) {
+    public Team(double budget) {
         this.budget=budget;
     }
 //endregion
@@ -34,7 +34,7 @@ public class Team {
         this.name = name;
     }
 
-    public int getBudget() {
+    public double getBudget() {
         return budget;
     }
 
@@ -74,8 +74,9 @@ public class Team {
     public void outputTeamData(Team team) {
         System.out.printf("%-25s", team.getName() + ":");
         System.out.println("   G - " + team.totalGoals + "  A - " + team.totalAssists + "  Total - " + team.totalPoints);
-        System.out.println("Team Budget: " + team.getBudget());
-        System.out.println("Team Rating: " + team.getTeamRating() + "\n");
+        System.out.print("Team Budget: $");
+        System.out.printf("%.2f", team.getBudget());
+        System.out.println(" \nTeam Rating: " + team.getTeamRating() + "\n");
     }
 //endregion
 
