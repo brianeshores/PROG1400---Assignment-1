@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Team {
 //region PROPERTIES
@@ -77,6 +78,19 @@ public class Team {
         System.out.print("Team Budget: $");
         System.out.printf("%.2f", team.getBudget());
         System.out.println(" \nTeam Rating: " + team.getTeamRating() + "\n");
+    }
+
+    public void getTeamInfo (Team team, float budget, Scanner input, ArrayList<Team> teamList, int i) {
+        System.out.println("Enter name for team #" + (i + 1) + ": ");
+        String teamName = input.nextLine();
+//CHECK TO SEE IF TEAM NAME IS GREATER THAN 3
+        while (teamName.length() < 3) {
+            System.out.println("Enter a name with at least 3 characters.");
+            teamName = input.nextLine();
+        }
+
+        team.setName(teamName);
+        teamList.add(team);
     }
 //endregion
 

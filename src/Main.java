@@ -1,6 +1,5 @@
 //region IMPORT STATEMENTS
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Random;
 //endregion
@@ -23,16 +22,7 @@ public class Main {
             budget = randomNum.nextInt(10001);
             Team team = new Team(budget);
 //USER INPUT FOR TEAM NAME
-            System.out.println("Enter name for team #" + (i + 1) + ": ");
-            String teamName = input.nextLine();
-//CHECK TO SEE IF TEAM NAME IS GREATER THAN 3
-            while (teamName.length() < 3) {
-                System.out.println("Enter a name with at least 3 characters.");
-                teamName = input.nextLine();
-            }
-
-            team.setName(teamName);
-            teamList.add(team);
+            team.getTeamInfo(team, budget, input, teamList, i);
         }
 //FOR EACH TEAM, CREATE 3 PLAYERS AND SET INFO
         System.out.println("\nPLAYER ENTRY\n");
@@ -42,52 +32,7 @@ public class Main {
             for (int j = 0; j < 3; j++) {
                 Player player = new Player();
 //USER INPUT FOR PLAYER NAME
-                System.out.println("Enter name for player #" + (j + 1) + ": ");
-                String playerName = input.nextLine();
-//CHECK TO SEE IF PLAYER NAME IS GREATER THAN 3
-                while (playerName.length() < 3) {
-                    System.out.println("Enter a name with at least 3 characters.");
-                    playerName = input.nextLine();
-                }
-                player.setName(playerName);
-
-//USER INPUT AND VALIDATION OF PLAYER STATS
-                int goals;
-                do {
-                    try {
-//USER INPUT FOR GOALS
-                        System.out.println("Enter Number of Goals for " + player.getName() + ": ");
-                        goals = input.nextInt();
-//CHECK GOALS ARE 0 OR GREATER
-                        if (goals < 0) System.out.println("Invalid input, please enter a positive number. ");
-//CHECK GOALS FOR IMPROPER INPUT TYPE
-                    } catch (InputMismatchException e) {
-                        System.out.println("Invalid input, please enter a positive number. ");
-                        goals = -1;
-                    }
-                    input.nextLine();
-                }
-                while (goals < 0);
-                player.setGoals(goals);
-
-                int assists;
-                do {
-                    try {
-//USER INPUT FOR ASSISTS
-                        System.out.println("Enter Number of Assists for " + player.getName() + ": ");
-                        assists = input.nextInt();
-//CHECK GOALS ARE 0 OR GREATER
-                        if (assists < 0) System.out.println("Invalid input, please enter a positive number. ");
-//CHECK GOALS FOR IMPROPER INPUT TYPE
-                    } catch (InputMismatchException e) {
-                        System.out.println("Invalid input, please enter a positive number. ");
-                        assists = -1;
-                    }
-                    input.nextLine();
-                } while (assists < 0);
-
-                player.setAssists(assists);
-                team.addPlayer(player);
+                player.getPlayerInfo(input, player, team, j);
             }
         }
 //endregion
